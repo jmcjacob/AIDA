@@ -5,29 +5,26 @@
         <div id='toolbar-side-icon-spacer'>
         </div>
 
-        <!-- Home -->
+        <!-- Home
         <router-link to='/'>
-            <v-toolbar-title class="white--text">
+            <v-toolbar-title class="white-text">
                 AIDA
             </v-toolbar-title>
         </router-link>
 
         <v-spacer></v-spacer>
 
-        <!-- Save -->
-        <app-save></app-save>
-
         <!-- Dashboard -->
-        <v-btn icon href='https://imageannotation.nds.ox.ac.uk:8443/AIDA/'>
+        <!-- <v-btn icon href='https://imageannotation.nds.ox.ac.uk:8443/AIDA/'>
             <v-icon> apps</v-icon>
-        </v-btn>
+        </v-btn> -->
 
         <!-- Docs -->
-        <router-link to='/docs'>
+        <!-- <router-link to='/docs'>
             <v-btn icon >
                 <v-icon> fa-book </v-icon>
             </v-btn>
-        </router-link>
+        </router-link> -->
 
         <!-- <v-btn icon class="pointers-no">
             <app-settings   :config='config'
@@ -50,13 +47,11 @@
 // Import child components
 import Settings from './settings/Settings.vue';
 import Account from './account/Account.vue';
-import Save from './save/Save.vue';
 
 export default {
     components: {
-        'app-settings': Settings,
-        'app-account': Account,
-        'app-save': Save
+        // 'app-settings': Settings,
+        // 'app-account': Account,
     }
 }
 

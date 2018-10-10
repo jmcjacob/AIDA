@@ -84,15 +84,15 @@ const state = {
             }
         },
         channels: [{
-            name: 'Duomo',
-            url: "https://openseadragon.github.io/example-images/duomo/duomo.dzi"
+            name: 'Image',
+            url: "/static/Downloads.dzi"
         }],
-        annotation: `[["Layer",{"name":"Lymphocytes","applyMatrix":true}],
-                     ["Layer",{"name":"Non-tumour region","applyMatrix":true}],
-                     ["Layer",{"name":"Tumour centre","applyMatrix":true}],
-                     ["Layer",{"name":"Invasive margin","applyMatrix":true}],
-                     ["Layer",{"name":"Glands","applyMatrix":true}]]`,
-        savedLayer: []
+        annotation: ``,
+        savedLayer: [["Layer",{"name":"Thing1","applyMatrix":true}],
+        ["Layer",{"name":"Thing2","applyMatrix":true}],
+        ["Layer",{"name":"Thing3","applyMatrix":true}],
+        ["Layer",{"name":"Thing4","applyMatrix":true}],
+        ["Layer",{"name":"Thing5","applyMatrix":true}]]
 };
 
 const getters = {
@@ -116,30 +116,10 @@ const actions = {
     // committing the state mutation which must run synchronously.
     loadConfig: ({state, rootState, commit, dispatch}, newConfig) => {
 
-        axios.get('https://aida-testing.firebaseio.com/.json')
-            // Update the config.js state
-            .then(function (response) {
-                commit('loadConfig', {
-                    rootState: rootState,
-                    newConfig: response.data.config // Javascript object in the same format as the default seen above.
-                })
-                // Update the PaperJS project representation
-                dispatch('loadProject', response.data.config.annotation, {root: true});
-                // Update the OpenSeaDragon image channels
-                dispatch('addImages', response.data.config.channels, {root: true});
-            })
-            .catch(function (error) {
-                console.log('Could not read data from external source.')
-                console.log('Returned the following error: ')
-                console.log(error);
-
-                console.log('Using defualt values.')
-
-                // Update the PaperJS project representation
-                dispatch('loadProject', state.annotation, {root: true});
-                // Update the OpenSeaDragon image channels
-                dispatch('addImages', state.channels, {root: true});
-        });
+        // Update the PaperJS project representation
+        // dispatch('loadProject', state.annotation, {root: true});
+        // Update the OpenSeaDragon image channels
+        dispatch('addImages', state.channels, {root: true});
     },
 
 	addImage: ({commit}, payload) => {
@@ -165,12 +145,12 @@ const actions = {
 
             // Here is where we would push to REST API
             // ****** Save to API *****
-            axios.put('https://aida-testing.firebaseio.com/.json', {
-                config: state
-            })
-            .then(function (response) {
+            // axios.put('https://api.jsonbin.io/b/5b0c164d7a973f4ce5784989', {
+            //     config: state
+            // })
+            // .then(function (response) {
                 console.log(response)
-            })
+            // })
         })
     },
 

@@ -2,7 +2,7 @@
 // The image viewer is controled via the OpenSeadragon js lib.
 import openseadragon from 'openseadragon';
 import paper from 'paper';
-import { Dropbox } from 'dropbox';
+// import { Dropbox } from 'dropbox';
 
 const state = {
 	viewer: null
@@ -121,17 +121,17 @@ const mutations = {
 	// Add images to the openseadragon Viewer
 	addImages: (state, channels) => {
 
-        // Testing out the Dropbox API
-        const dbx = new Dropbox({accessToken: 'xlqjSKteomMAAAAAAAEUginZtBdltTnoyDVkMf0mEApiCNnd_NLIDcHX9F4AMrm-'});
+        // // Testing out the Dropbox API
+        // const dbx = new Dropbox({accessToken: 'xlqjSKteomMAAAAAAAEUginZtBdltTnoyDVkMf0mEApiCNnd_NLIDcHX9F4AMrm-'});
 
-        // Test activation
-        dbx.filesListFolder({path: ''})
-            .then(function(response) {
-                console.log(response.entries);
-            })
-            .catch(function(error) {
-                console.error(error);
-            });
+        // // Test activation
+        // dbx.filesListFolder({path: ''})
+        //     .then(function(response) {
+        //         console.log(response.entries);
+        //     })
+        //     .catch(function(error) {
+        //         console.error(error);
+        //     });
 
 		for (let image in channels){
 
@@ -142,7 +142,7 @@ const mutations = {
                 tileSource: channels[image].url,
                 x: 0,
                 y: 0,
-                opacity: 0.7
+                opacity: 1.0
             });
 		}
 	},
